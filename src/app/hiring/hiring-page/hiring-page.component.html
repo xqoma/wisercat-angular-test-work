@@ -18,6 +18,9 @@
                     class="form-control form-control-lg text-center"
                     formControlName="name"
                   />
+                  <small *ngIf="isErrorMsg(name)" class="text-danger">
+                    {{ getErrorMsg(name) }}
+                  </small>
                 </div>
 
                 <div class="mb-4">
@@ -28,6 +31,9 @@
                     class="form-control form-control-lg text-center"
                     formControlName="surname"
                   />
+                  <small *ngIf="isErrorMsg(surname)" class="text-danger">
+                    {{ getErrorMsg(surname) }}
+                  </small>
                 </div>
 
                 <div class="mb-4">
@@ -38,6 +44,9 @@
                     class="form-control form-control-lg text-center"
                     formControlName="email"
                   />
+                  <small *ngIf="isErrorMsg(email)" class="text-danger">
+                    {{ getErrorMsg(email) }}
+                  </small>
                 </div>
 
                 <div class="mb-4">
@@ -53,6 +62,9 @@
                     />
                     <span class="input-group-text">months</span>
                   </div>
+                  <small *ngIf="isErrorMsg(workExpMonths)" class="text-danger">
+                    {{ getErrorMsg(workExpMonths) }}
+                  </small>
                 </div>
 
                 <div class="row">
