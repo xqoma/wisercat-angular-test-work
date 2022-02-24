@@ -19,7 +19,7 @@ export class HiringPageComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', Validators.required],
       surname: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       workExpMonths: ['', Validators.required],
     })
   }
