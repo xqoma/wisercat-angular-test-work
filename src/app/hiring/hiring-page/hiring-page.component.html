@@ -9,13 +9,14 @@
 
               <!-- Form errors are here -->
 
-              <form>
+              <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="mb-4">
                   <label class="form-label" for="name">Name</label>
                   <input
                     type="text"
                     id="name"
                     class="form-control form-control-lg text-center"
+                    formControlName="name"
                   />
                 </div>
 
@@ -25,6 +26,7 @@
                     type="text"
                     id="surname"
                     class="form-control form-control-lg text-center"
+                    formControlName="surname"
                   />
                 </div>
 
@@ -34,19 +36,20 @@
                     type="email"
                     id="email"
                     class="form-control form-control-lg text-center"
+                    formControlName="email"
                   />
                 </div>
 
                 <div class="mb-4">
-                  <label class="form-label" for="working-exp">
+                  <label class="form-label" for="workExpMonths">
                     Working experience
                   </label>
                   <div class="input-group">
                     <input
                       type="text"
-                      id="working-exp"
+                      id="workExpMonths"
                       class="form-control form-control-lg text-center"
-                      align="right"
+                      formControlName="workExpMonths"
                     />
                     <span class="input-group-text">months</span>
                   </div>
@@ -54,13 +57,19 @@
 
                 <div class="row">
                   <div class="col-6 d-grid">
-                    <button class="btn btn-success btn-lg" type="button">
-                      Submit
-                    </button>
+                    <input
+                      class="btn btn-success btn-lg"
+                      type="submit"
+                      value="Submit"
+                    />
                   </div>
 
                   <div class="col-6 d-grid">
-                    <button class="btn btn-secondary btn-lg" type="button">
+                    <button
+                      class="btn btn-secondary btn-lg"
+                      type="button"
+                      (click)="onReset()"
+                    >
                       Reset
                     </button>
                   </div>
