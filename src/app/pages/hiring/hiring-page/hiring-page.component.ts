@@ -8,7 +8,7 @@ import {
 } from '@angular/forms'
 
 import {ERROR_MESSAGES} from 'src/app/constants/error-messages.config'
-import {isNumberValidator} from 'src/app/shared/validators/is-number.validator'
+import {isPositiveNumberValidator} from 'src/app/shared/validators/is-positive-number.validator'
 import {positiveDecimalLengthValidator} from 'src/app/shared/validators/positive-decimal-length.validator'
 
 const WORK_EXP_DIGITS_AFTER_COMMA: number = 1
@@ -57,7 +57,7 @@ export class HiringPageComponent implements OnInit {
           '',
           [
             Validators.required,
-            isNumberValidator(),
+            isPositiveNumberValidator(),
             positiveDecimalLengthValidator(WORK_EXP_DIGITS_AFTER_COMMA),
           ],
         ],
