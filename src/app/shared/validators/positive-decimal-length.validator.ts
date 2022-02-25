@@ -10,9 +10,12 @@ export function positiveDecimalLengthValidator(
       return null
     }
 
-    const IS_A_FLOAT_NUMBER_REG_EXP = new RegExp('^(\\d)*(\\.|\\,)([0-9]*)?$')
-    // To show error only for number
-    if (!IS_A_FLOAT_NUMBER_REG_EXP.test(value)) {
+    const POSITIVE_FLOAT_NUMBER_REGEXP = new RegExp(
+      '^(\\d)*(\\.|\\,)([0-9]*)?$'
+    )
+
+    // To show error only for positive float number
+    if (!POSITIVE_FLOAT_NUMBER_REGEXP.test(value)) {
       return null
     }
 

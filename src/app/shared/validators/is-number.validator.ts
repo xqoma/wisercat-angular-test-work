@@ -8,6 +8,10 @@ export function isNumberValidator(): ValidatorFn {
       return null
     }
 
-    return isNaN(Number(value)) ? {isNumber: true} : null
+    const POSITIVE_NUMBER_REGEXP = new RegExp('^(\\d)*(\\.|\\,)?([0-9]*)?$')
+
+    return !POSITIVE_NUMBER_REGEXP.test(value)
+      ? {notAPositiveNumber: true}
+      : null
   }
 }
