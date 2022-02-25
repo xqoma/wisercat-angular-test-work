@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser'
 
 import {AppRoutingModule} from 'src/app/app-routing.module'
 import {AppComponent} from 'src/app/app.component'
-import {HiringModule} from 'src/app/hiring/hiring.module'
+import {HiringModule} from 'src/app/pages/hiring/hiring.module'
 
 @NgModule({
   declarations: [AppComponent],

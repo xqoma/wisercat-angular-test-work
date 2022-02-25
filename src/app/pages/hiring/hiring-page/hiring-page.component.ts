@@ -8,6 +8,7 @@ import {
 } from '@angular/forms'
 
 import {ERROR_MESSAGES} from 'src/app/constants/error-messages.config'
+import {isNumberValidator} from 'src/app/shared/validators/is-number.validator'
 
 @Component({
   selector: 'app-hiring-page',
@@ -45,7 +46,7 @@ export class HiringPageComponent implements OnInit {
         name: ['', Validators.required],
         surname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        workExpMonths: ['', Validators.required],
+        workExpMonths: ['', [Validators.required, isNumberValidator()]],
       },
       {updateOn: 'blur'}
     )
