@@ -9,6 +9,9 @@ import {
 
 import {ERROR_MESSAGES} from 'src/app/constants/error-messages.config'
 import {isNumberValidator} from 'src/app/shared/validators/is-number.validator'
+import {positiveDecimalLengthValidator} from 'src/app/shared/validators/positive-decimal-length.validator'
+
+const WORK_EXP_DIGITS_AFTER_COMMA: number = 1
 
 @Component({
   selector: 'app-hiring-page',
@@ -40,13 +43,24 @@ export class HiringPageComponent implements OnInit {
     return this.form.get('workExpMonths')
   }
 
+  get workExpDigitsAfterComma(): number {
+    return WORK_EXP_DIGITS_AFTER_COMMA
+  }
+
   initializeForm(): void {
     this.form = this.fb.group(
       {
         name: ['', Validators.required],
         surname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        workExpMonths: ['', [Validators.required, isNumberValidator()]],
+        workExpMonths: [
+          '',
+          [
+            Validators.required,
+            isNumberValidator(),
+            positiveDecimalLengthValidator(WORK_EXP_DIGITS_AFTER_COMMA),
+          ],
+        ],
       },
       {updateOn: 'blur'}
     )

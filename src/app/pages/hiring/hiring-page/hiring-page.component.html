@@ -64,6 +64,11 @@
                   </div>
                   <small *ngIf="isErrorMsg(workExpMonths)" class="text-danger">
                     {{ getErrorMsg(workExpMonths) }}
+                    <ng-container
+                      *ngIf="workExpMonths?.hasError('invalidDecimalLength')"
+                    >
+                      {{ workExpDigitsAfterComma + '.' }}
+                    </ng-container>
                   </small>
                 </div>
 
