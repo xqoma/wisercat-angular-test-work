@@ -4,6 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {RouterModule, Routes} from '@angular/router'
 
 import {HiringPageComponent} from 'src/app/pages/hiring/hiring-page/hiring-page.component'
+import {MessageAlerModule} from 'src/app/shared/modules/message-alert/message-alert.module'
 
 const routes: Routes = [
   {
@@ -13,7 +14,12 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    MessageAlerModule,
+  ],
   declarations: [HiringPageComponent],
 })
 export class HiringModule {}

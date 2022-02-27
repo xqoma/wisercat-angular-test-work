@@ -7,7 +7,12 @@
             <div class="card-body p-5 text-center">
               <h3 class="mb-5">Join our team!</h3>
 
-              <!-- Form errors are here -->
+              <app-message-alert
+                [text]="messageAlert.text"
+                [type]="messageAlert.type"
+                (closed)="messageAlert.showned = false"
+                *ngIf="messageAlert.showned"
+              ></app-message-alert>
 
               <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="mb-4">

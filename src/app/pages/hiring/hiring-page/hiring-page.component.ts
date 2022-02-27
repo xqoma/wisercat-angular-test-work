@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, ViewChildren} from '@angular/core'
 import {
   AbstractControl,
   FormBuilder,
@@ -7,11 +7,13 @@ import {
   Validators,
 } from '@angular/forms'
 
-import {ERROR_MESSAGES} from 'src/app/constants/error-messages.config'
+import {MESSAGES} from 'src/app/shared/constants/messages.config'
+import {MessageAlertInterface} from 'src/app/shared/types/message-alert.interface'
 import {isPositiveNumberValidator} from 'src/app/shared/validators/is-positive-number.validator'
 import {positiveDecimalLengthValidator} from 'src/app/shared/validators/positive-decimal-length.validator'
 
 const WORK_EXP_DIGITS_AFTER_COMMA: number = 1
+const DEFAULT_MESSAGE_ALERT_TYPE = 'info'
 
 @Component({
   selector: 'app-hiring-page',
@@ -21,7 +23,15 @@ const WORK_EXP_DIGITS_AFTER_COMMA: number = 1
 export class HiringPageComponent implements OnInit {
   form!: FormGroup
 
-  constructor(private fb: FormBuilder) {}
+  messageAlert: MessageAlertInterface
+
+  constructor(private fb: FormBuilder) {
+    this.messageAlert = {
+      text: '',
+      type: DEFAULT_MESSAGE_ALERT_TYPE,
+      showned: false,
+    }
+  }
 
   ngOnInit(): void {
     this.initializeForm()
@@ -81,27 +91,35 @@ export class HiringPageComponent implements OnInit {
 
     let errorMsg: string = ''
     Object.keys(errors).forEach((keyErr) => {
-      if (keyErr in ERROR_MESSAGES) {
-        errorMsg += ERROR_MESSAGES[keyErr] + ' '
+      if (keyErr in MESSAGES.errors) {
+        errorMsg += MESSAGES.errors[keyErr] + ' '
       } else {
-        errorMsg += 'Unknown error: ' + keyErr
+        errorMsg += MESSAGES.errors['unknownError'] + keyErr
       }
     })
     return errorMsg
   }
 
-  resetForm(): void {
-    this.form.reset()
+  private showMessageAlert(text: string, type?: string): void {
+    this.messageAlert.text = text
+    if (type) {
+      this.messageAlert.type = type
+    } else {
+      this.messageAlert.type = DEFAULT_MESSAGE_ALERT_TYPE
+    }
+    this.messageAlert.showned = true
   }
 
   onSubmit(): void {
-    console.log('Form is valid:', this.form.valid)
-    console.log(this.form.value)
-    // Here is a submit logic
+    if (this.form.valid) {
+      this.showMessageAlert(MESSAGES.successes['formSubmitted'], 'success')
+    } else {
+      this.showMessageAlert(MESSAGES.errors['invalidForm'], 'error')
+    }
   }
 
   onReset(): void {
-    this.resetForm()
-    // Show message method
+    this.form.reset()
+    this.showMessageAlert(MESSAGES.infos['formCleared'])
   }
 }
