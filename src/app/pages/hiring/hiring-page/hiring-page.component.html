@@ -4,8 +4,8 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong form-card">
-            <div class="card-body p-5 text-center">
-              <h3 class="mb-5">Join our team!</h3>
+            <div class="card-body p-5">
+              <h3 class="mb-5 text-center">Join our team!</h3>
 
               <app-message-alert
                 [text]="messageAlert.text"
@@ -20,7 +20,7 @@
                   <input
                     type="text"
                     id="name"
-                    class="form-control form-control-lg text-center"
+                    class="form-control form-control-lg"
                     formControlName="name"
                   />
                   <small *ngIf="isErrorMsg(name)" class="text-danger">
@@ -33,7 +33,7 @@
                   <input
                     type="text"
                     id="surname"
-                    class="form-control form-control-lg text-center"
+                    class="form-control form-control-lg"
                     formControlName="surname"
                   />
                   <small *ngIf="isErrorMsg(surname)" class="text-danger">
@@ -46,7 +46,7 @@
                   <input
                     type="email"
                     id="email"
-                    class="form-control form-control-lg text-center"
+                    class="form-control form-control-lg"
                     formControlName="email"
                   />
                   <small *ngIf="isErrorMsg(email)" class="text-danger">
@@ -62,7 +62,7 @@
                     <input
                       type="text"
                       id="workExpMonths"
-                      class="form-control form-control-lg text-center"
+                      class="form-control form-control-lg"
                       formControlName="workExpMonths"
                     />
                     <span class="input-group-text">months</span>
