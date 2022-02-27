@@ -114,6 +114,7 @@ export class HiringPageComponent implements OnInit {
     if (this.form.valid) {
       this.showMessageAlert(MESSAGES.successes['formSubmitted'], 'success')
     } else {
+      this.form.markAllAsTouched()
       this.showMessageAlert(MESSAGES.errors['invalidForm'], 'error')
     }
   }
