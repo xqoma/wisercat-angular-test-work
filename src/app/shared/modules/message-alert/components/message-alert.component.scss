@@ -1,0 +1,31 @@
+$message-color: white;
+$info-color: #2196f3;
+$error-color: #e53935;
+$success-color: #4caf50;
+
+.message-alert {
+  color: $message-color;
+
+  &.info {
+    background-color: $info-color;
+  }
+  &.error {
+    background-color: $error-color;
+  }
+  &.success {
+    background-color: $success-color;
+  }
+
+  .message {
+    margin: 0;
+    padding: 0;
+  }
+
+  .btn-close {
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
