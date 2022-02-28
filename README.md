@@ -1,10 +1,22 @@
 # Wisercat Angular Test Work
 
-This is a test work for [Wisercat](https://wisercat.eu/).
+> Test work for [Wisercat](https://wisercat.eu/).
 
-I created a kanban board for the project and divided the technical requirement into many tasks to simplify implementation. The project kanban board is here: https://taiga.xqoma.com/project/wisercat-angular-test-work/kanban
+### Links
 
-## Technical task from Wisercat
+- [Live Demo](https://xqoma.github.io/wisercat-angular-test-work)
+- [Project Kanban Bord](https://taiga.xqoma.com/project/wisercat-angular-test-work/kanban)
+- [Notes](#notes)
+- [Technical task from Wisercat](#technical-task-from-wisercat)
+
+### Notes
+
+- **Task decomposition.** I created a [kanban board](https://taiga.xqoma.com/project/wisercat-angular-test-work/kanban) for the project and decomposed the technical requirement into many tasks to simplify implementation.
+- **LiveDemo** Also, I published a [demo](https://xqoma.github.io/wisercat-angular-test-work) of the project on Github Pages so that you can easily share and see how it works.
+- **Project architecture.** I tried to make the project flexible, scalable and easily maintainable. Thus, showing his understanding of building the project architecture.
+- **Git.** This repository contains all the branches and commits that I made, in order to show that I have experience with git. I didn't make a separate "develop" branch for feature implementation, because I thought it was overkill for such a project and I worked alone. It would not be so convenient.
+
+### Technical task from [Wisercat](https://wisercat.eu/)
 
 - Create a form using Angular reactive forms (any Angular version from 2-13 is OK).
 - Form should have fields: Name, Surname, Email, Working experience in months (6; 12; 36; 23,5 etc.)
