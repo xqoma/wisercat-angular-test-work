@@ -1,18 +1,14 @@
 import {ValidatorFn, AbstractControl, ValidationErrors} from '@angular/forms'
 
+const POSITIVE_FLOAT_NUMBER_REGEXP = new RegExp('^(\\d)*(\\.|\\,)([0-9]*)?$')
+
 export function positiveDecimalLengthValidator(
   digitsAfterComma: number
 ): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value
 
-    if (!value) {
-      return null
-    }
-
-    const POSITIVE_FLOAT_NUMBER_REGEXP = new RegExp(
-      '^(\\d)*(\\.|\\,)([0-9]*)?$'
-    )
+    if (!value) return null
 
     // To show error only for positive float number
     if (!POSITIVE_FLOAT_NUMBER_REGEXP.test(value)) {
