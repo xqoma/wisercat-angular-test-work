@@ -27,8 +27,8 @@
                     class="form-control form-control-lg"
                     formControlName="name"
                   />
-                  <small *ngIf="isErrorMsg(name)" class="text-danger">
-                    {{ getErrorMsg(name) }}
+                  <small *ngIf="isInputErrorMsg(name)" class="text-danger">
+                    {{ getInputErrorMsg(name) }}
                   </small>
                 </div>
 
@@ -42,8 +42,8 @@
                     class="form-control form-control-lg"
                     formControlName="surname"
                   />
-                  <small *ngIf="isErrorMsg(surname)" class="text-danger">
-                    {{ getErrorMsg(surname) }}
+                  <small *ngIf="isInputErrorMsg(surname)" class="text-danger">
+                    {{ getInputErrorMsg(surname) }}
                   </small>
                 </div>
 
@@ -57,8 +57,8 @@
                     class="form-control form-control-lg"
                     formControlName="email"
                   />
-                  <small *ngIf="isErrorMsg(email)" class="text-danger">
-                    {{ getErrorMsg(email) }}
+                  <small *ngIf="isInputErrorMsg(email)" class="text-danger">
+                    {{ getInputErrorMsg(email) }}
                   </small>
                 </div>
 
@@ -77,8 +77,11 @@
                       {{ 'pages.hiring.form.fields.workExp.tip' | translate }}
                     </span>
                   </div>
-                  <small *ngIf="isErrorMsg(workExpMonths)" class="text-danger">
-                    {{ getErrorMsg(workExpMonths) }}
+                  <small
+                    *ngIf="isInputErrorMsg(workExpMonths)"
+                    class="text-danger"
+                  >
+                    {{ getInputErrorMsg(workExpMonths) }}
                   </small>
                 </div>
 

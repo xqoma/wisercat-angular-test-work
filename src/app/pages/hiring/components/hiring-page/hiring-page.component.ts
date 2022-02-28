@@ -12,6 +12,7 @@ import {MessageAlertInterface} from 'src/app/shared/types/message-alert.interfac
 import {isPositiveNumberValidator} from 'src/app/shared/validators/is-positive-number.validator'
 import {positiveDecimalLengthValidator} from 'src/app/shared/validators/positive-decimal-length.validator'
 
+const FORM_UPDATE_ON = 'blur'
 const WORK_EXP_DIGITS_AFTER_COMMA: number = 1
 const DEFAULT_MESSAGE_ALERT_TYPE = 'info'
 
@@ -22,7 +23,6 @@ const DEFAULT_MESSAGE_ALERT_TYPE = 'info'
 })
 export class HiringPageComponent implements OnInit {
   form!: FormGroup
-
   messageAlert: MessageAlertInterface
 
   constructor(private fb: FormBuilder, private translate: TranslateService) {
@@ -68,24 +68,31 @@ export class HiringPageComponent implements OnInit {
           ],
         ],
       },
-      {updateOn: 'blur'}
+      {updateOn: FORM_UPDATE_ON}
     )
   }
 
-  isErrorMsg(control: AbstractControl | null): boolean | null {
+  isInputErrorMsg(control: AbstractControl | null): boolean | null {
     if (!control) return null
 
     return control.invalid && control.touched
   }
 
-  getErrorMsg(control: AbstractControl | null): string | null {
+  getInputErrorMsg(control: AbstractControl | null): string | null {
     if (!control) return null
 
     const errors: ValidationErrors | null = control.errors
 
     if (!errors) return null
 
-    let errorMsg: string = ''
+    const errorMsg = this.getInputErrorString(errors)
+
+    return errorMsg
+  }
+
+  private getInputErrorString(errors: ValidationErrors): string {
+    let errorString = ''
+
     Object.keys(errors).forEach((keyErr) => {
       let count: number | undefined
       if (keyErr === 'invalidDecimalLength') {
@@ -95,10 +102,11 @@ export class HiringPageComponent implements OnInit {
       this.translate
         .stream(`shared.errors.${keyErr}`, {count: count})
         .subscribe((text) => {
-          errorMsg += text + ' '
+          errorString += text + ' '
         })
     })
-    return errorMsg
+
+    return errorString
   }
 
   private showMessageAlert(text: string, type?: string): void {
