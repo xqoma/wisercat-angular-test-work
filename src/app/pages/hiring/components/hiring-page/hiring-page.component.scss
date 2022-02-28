@@ -1,4 +1,6 @@
-$page-background: #c1cfff;
+$page-background-gradient: linear-gradient(to right, #8662c7, #2fc092);
+$page-background: #5792a9; // for old devices
+
 $input-valid-color: #0eb30e;
 $input-invalid-color: #ff0000;
 
@@ -7,6 +9,7 @@ $form-card-border-radius: 1rem;
 .hiring-page {
   .page-background {
     background: $page-background;
+    background-image: $page-background-gradient;
   }
 
   .form-card {
