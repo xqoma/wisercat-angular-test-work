@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChildren} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {
   AbstractControl,
   FormBuilder,
@@ -6,8 +6,8 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms'
+import {TranslateService} from '@ngx-translate/core'
 
-import {MESSAGES} from 'src/app/shared/constants/messages.config'
 import {MessageAlertInterface} from 'src/app/shared/types/message-alert.interface'
 import {isPositiveNumberValidator} from 'src/app/shared/validators/is-positive-number.validator'
 import {positiveDecimalLengthValidator} from 'src/app/shared/validators/positive-decimal-length.validator'
@@ -25,7 +25,7 @@ export class HiringPageComponent implements OnInit {
 
   messageAlert: MessageAlertInterface
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private translate: TranslateService) {
     this.messageAlert = {
       text: '',
       type: DEFAULT_MESSAGE_ALERT_TYPE,
@@ -51,10 +51,6 @@ export class HiringPageComponent implements OnInit {
 
   get workExpMonths(): AbstractControl | null {
     return this.form.get('workExpMonths')
-  }
-
-  get workExpDigitsAfterComma(): number {
-    return WORK_EXP_DIGITS_AFTER_COMMA
   }
 
   initializeForm(): void {
@@ -91,11 +87,16 @@ export class HiringPageComponent implements OnInit {
 
     let errorMsg: string = ''
     Object.keys(errors).forEach((keyErr) => {
-      if (keyErr in MESSAGES.errors) {
-        errorMsg += MESSAGES.errors[keyErr] + ' '
-      } else {
-        errorMsg += MESSAGES.errors['unknownError'] + keyErr
+      let count: number | undefined
+      if (keyErr === 'invalidDecimalLength') {
+        count = WORK_EXP_DIGITS_AFTER_COMMA
       }
+
+      this.translate
+        .stream(`shared.errors.${keyErr}`, {count: count})
+        .subscribe((text) => {
+          errorMsg += text + ' '
+        })
     })
     return errorMsg
   }
@@ -112,15 +113,29 @@ export class HiringPageComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      this.showMessageAlert(MESSAGES.successes['formSubmitted'], 'success')
+      this.translate
+        .stream('shared.successes.formSubmitted')
+        .subscribe((text) => {
+          this.showMessageAlert(text, 'success')
+        })
     } else {
       this.form.markAllAsTouched()
-      this.showMessageAlert(MESSAGES.errors['invalidForm'], 'error')
+      // prettier-ignore
+      this.translate
+        .stream('shared.errors.invalidForm')
+        .subscribe((text) => {
+          this.showMessageAlert(text, 'error')
+        })
     }
   }
 
   onReset(): void {
     this.form.reset()
-    this.showMessageAlert(MESSAGES.infos['formCleared'])
+    // prettier-ignore
+    this.translate
+      .stream('shared.infos.formCleared')
+      .subscribe((text) => {
+        this.showMessageAlert(text)
+      })
   }
 }

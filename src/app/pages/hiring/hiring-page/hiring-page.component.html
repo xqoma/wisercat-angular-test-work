@@ -5,7 +5,9 @@
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
           <div class="card shadow-2-strong form-card">
             <div class="card-body p-5">
-              <h3 class="mb-5 text-center">Join our team!</h3>
+              <h3 class="mb-5 text-center">
+                {{ 'pages.hiring.form.title' | translate }}
+              </h3>
 
               <app-message-alert
                 [text]="messageAlert.text"
@@ -16,7 +18,9 @@
 
               <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="mb-4">
-                  <label class="form-label" for="name">Name</label>
+                  <label class="form-label" for="name">
+                    {{ 'pages.hiring.form.fields.name' | translate }}
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -29,7 +33,9 @@
                 </div>
 
                 <div class="mb-4">
-                  <label class="form-label" for="surname">Surname</label>
+                  <label class="form-label" for="surname">
+                    {{ 'pages.hiring.form.fields.surname' | translate }}
+                  </label>
                   <input
                     type="text"
                     id="surname"
@@ -42,7 +48,9 @@
                 </div>
 
                 <div class="mb-4">
-                  <label class="form-label" for="email">Email</label>
+                  <label class="form-label" for="email">
+                    {{ 'pages.hiring.form.fields.email' | translate }}
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -56,7 +64,7 @@
 
                 <div class="mb-4">
                   <label class="form-label" for="workExpMonths">
-                    Working experience
+                    {{ 'pages.hiring.form.fields.workExp.label' | translate }}
                   </label>
                   <div class="input-group">
                     <input
@@ -65,15 +73,12 @@
                       class="form-control form-control-lg"
                       formControlName="workExpMonths"
                     />
-                    <span class="input-group-text">months</span>
+                    <span class="input-group-text">
+                      {{ 'pages.hiring.form.fields.workExp.tip' | translate }}
+                    </span>
                   </div>
                   <small *ngIf="isErrorMsg(workExpMonths)" class="text-danger">
                     {{ getErrorMsg(workExpMonths) }}
-                    <ng-container
-                      *ngIf="workExpMonths?.hasError('invalidDecimalLength')"
-                    >
-                      {{ workExpDigitsAfterComma + '.' }}
-                    </ng-container>
                   </small>
                 </div>
 
@@ -82,7 +87,9 @@
                     <input
                       class="btn btn-success btn-lg"
                       type="submit"
-                      value="Submit"
+                      value="{{
+                        'pages.hiring.form.buttons.submit' | translate
+                      }}"
                     />
                   </div>
 
@@ -92,7 +99,7 @@
                       type="button"
                       (click)="onReset()"
                     >
-                      Reset
+                      {{ 'pages.hiring.form.buttons.reset' | translate }}
                     </button>
                   </div>
                 </div>

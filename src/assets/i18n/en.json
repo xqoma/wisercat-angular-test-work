@@ -1,1 +1,37 @@
-{}
+{
+  "pages": {
+    "hiring": {
+      "form": {
+        "title": "Join our team!",
+        "fields": {
+          "name": "Name",
+          "surname": "Surname",
+          "email": "Email",
+          "workExp": {
+            "label": "Working experience",
+            "tip": "months"
+          }
+        },
+        "buttons": {
+          "submit": "Submit",
+          "reset": "Reset"
+        }
+      }
+    }
+  },
+  "shared": {
+    "errors": {
+      "required": "This field is required.",
+      "email": "Invalid email format.",
+      "notAPositiveNumber": "The value must be a positive number.",
+      "invalidDecimalLength": "Max digits after comma: {{count}}.",
+      "invalidForm": "The form is invalid"
+    },
+    "infos": {
+      "formCleared": "The form was cleared"
+    },
+    "successes": {
+      "formSubmitted": "The form was submitted successfully!"
+    }
+  }
+}
