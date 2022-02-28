@@ -12,7 +12,7 @@
 ### Notes
 
 - **Task decomposition.** I created a [kanban board](https://taiga.xqoma.com/project/wisercat-angular-test-work/kanban) for the project and decomposed the technical requirement into many tasks to simplify implementation.
-- **LiveDemo** Also, I published a [demo](https://xqoma.github.io/wisercat-angular-test-work) of the project on Github Pages so that you can easily share and see how it works.
+- **LiveDemo.** Also, I published a [demo](https://xqoma.github.io/wisercat-angular-test-work) of the project on Github Pages so that you can easily share and see how it works.
 - **Project architecture.** I tried to make the project flexible, scalable and easily maintainable. Thus, showing his understanding of building the project architecture.
 - **Git.** This repository contains all the branches and commits that I made, in order to show that I have experience with git. I didn't make a separate "develop" branch for feature implementation, because I thought it was overkill for such a project and I worked alone. It would not be so convenient.
 
